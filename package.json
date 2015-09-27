@@ -1,11 +1,15 @@
 {
   "name": "jspm-dev-builder",
   "version": "0.1.0",
-  "description": "A watch task to bundle your jspm based application in development.",
+  "description": "A tiny library for building jspm bundles in development",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Franklin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "jspm": "^0.16.10"
+  }
 }
