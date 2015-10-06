@@ -12,5 +12,19 @@
     "chalk": "^1.1.1",
     "jspm": "^0.16.10",
     "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.11"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "test-project"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
