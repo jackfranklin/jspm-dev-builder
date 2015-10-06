@@ -1,5 +1,6 @@
 var chalk = require('chalk');
 var path = require('path');
+var _ = require('lodash');
 
 var sharedCache = {};
 
@@ -8,6 +9,13 @@ function DevBuilder(options) {
   this.outLoc = options.outLoc;
   this.logPrefix = options.logPrefix || 'jspm-dev';
   this.jspm = options.jspm || require('jspm');
+  this.buildOptions = _.extend({
+    sfx: false,
+    minify: false,
+    mangle: false,
+    sourceMaps: false,
+    lowResSourceMaps: false,
+  }, options.buildOptions || {});
 }
 
 DevBuilder.prototype.removeFromTrace = function(filename) {
@@ -24,6 +32,14 @@ DevBuilder.prototype.removeFromTrace = function(filename) {
   }, this);
 };
 
+DevBuilder.prototype.bundle = function() {
+  var buildOptions = _.omit(this.buildOptions, 'sfx');
+  if (this.buildOptions.sfx) {
+    return this.builder.buildStatic(this.expression, this.outLoc, buildOptions);
+  } else {
+    return this.builder.build(this.expression, this.outLoc, buildOptions);
+  }
+}
 DevBuilder.prototype.build = function(filename) {
   this.builder = new this.jspm.Builder();
   if (filename) {
@@ -35,7 +51,7 @@ DevBuilder.prototype.build = function(filename) {
 
   this.logInfo('jspm build starting', chalk.blue(this.expression));
 
-  return this.builder.bundle(this.expression, this.outLoc).then(function() {
+  return this.bundle().then(function() {
     sharedCache = this.builder.getCache();
 
     var buildEnd = Date.now();

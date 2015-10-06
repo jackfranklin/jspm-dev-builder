@@ -18,6 +18,15 @@ var appDevBuilder = new DevBuilder({
   expression: path.join('app', 'bootstrap.js'), // path to your app's entry point
   outLoc: path.join('client', 'app-bundle.js'), // where you want the output file
   logPrefix: 'jspm-app', // put at the beginning of log messages from dev builder
+  buildOptions: {
+    sfx: false, // if the build should be self executing
+    // below options are passed straight through to the builder
+    // the values shown are the defaults
+    minify: false,
+    mangle: false,
+    sourceMaps: false,
+    lowResSourceMaps: false,
+  }
 });
 ```
 
