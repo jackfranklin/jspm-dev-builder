@@ -35,8 +35,10 @@ DevBuilder.prototype.removeFromTrace = function(filename) {
 DevBuilder.prototype.bundle = function() {
   var buildOptions = _.omit(this.buildOptions, 'sfx');
   if (this.buildOptions.sfx) {
+    this.logInfo('Building SFX bundle');
     return this.builder.buildStatic(this.expression, this.outLoc, buildOptions);
   } else {
+    this.logInfo('Building non-SFX bundle');
     return this.builder.build(this.expression, this.outLoc, buildOptions);
   }
 }
