@@ -15,7 +15,7 @@ var DevBuilder = require('jspm-dev-builder');
 
 var appDevBuilder = new DevBuilder({
   jspm: require('jspm'), // so you can use your local version of jspm
-  inLoc: path.join('app', 'bootstrap.js'), // path to your app's entry point
+  expression: path.join('app', 'bootstrap.js'), // path to your app's entry point
   outLoc: path.join('client', 'app-bundle.js'), // where you want the output file
   logPrefix: 'jspm-app', // put at the beginning of log messages from dev builder
 });

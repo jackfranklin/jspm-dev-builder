@@ -4,7 +4,7 @@ var path = require('path');
 var sharedCache = {};
 
 function DevBuilder(options) {
-  this.inLoc = options.inLoc;
+  this.expression = options.expression;
   this.outLoc = options.outLoc;
   this.logPrefix = options.logPrefix || 'jspm-dev';
   this.jspm = options.jspm || require('jspm');
@@ -33,9 +33,9 @@ DevBuilder.prototype.build = function(filename) {
 
   var buildStart = Date.now();
 
-  this.logInfo('jspm build starting', chalk.blue(this.inLoc));
+  this.logInfo('jspm build starting', chalk.blue(this.expression));
 
-  return this.builder.bundle(this.inLoc, this.outLoc).then(function() {
+  return this.builder.bundle(this.expression, this.outLoc).then(function() {
     sharedCache = this.builder.getCache();
 
     var buildEnd = Date.now();
