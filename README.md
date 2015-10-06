@@ -47,3 +47,14 @@ jspm-app Deleting app-compiled/routes/home/index/home-index.controller.js from t
 jspm-app jspm build starting app/bootstrap.js
 jspm-app jspm build finished 429
 ```
+
+## Changelog
+
+#### 0.2.0 (not yet released)
+- renamed `inLoc` to `expression`
+- added `buildOptions` which are passed through to SystemJS-builder
+- added `buildOptions.sfx` to turn on self executing bundling
+
+#### 0.1.0
+- initial release
+
