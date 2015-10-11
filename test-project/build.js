@@ -1,5 +1,6 @@
 var DevBuilder = require('../index');
 var path = require('path');
+var chokidar = require('chokidar');
 
 var appBuilder = new DevBuilder({
   jspm: require('jspm'),
@@ -12,3 +13,8 @@ var appBuilder = new DevBuilder({
 });
 
 appBuilder.build();
+
+chokidar.watch('main.js').on('change', function() {
+  appBuilder.build('main.js');
+});
+
