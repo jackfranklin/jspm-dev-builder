@@ -2,8 +2,6 @@ var chalk = require('chalk');
 var path = require('path');
 var _ = require('lodash');
 
-var sharedCache = {};
-
 function DevBuilder(options) {
   this.expression = options.expression;
   this.outLoc = options.outLoc;
@@ -19,17 +17,11 @@ function DevBuilder(options) {
 }
 
 DevBuilder.prototype.removeFromTrace = function(filename) {
-  // the trace is keyed by the filename but with extra things on it
-  // so we can't just call delete trace[filename]
-  if (!(sharedCache && sharedCache.trace)) return;
+  if (!this.builder) return;
 
-  var traceKeys = Object.keys(sharedCache.trace);
-  traceKeys.filter(function(key) {
-    return key.indexOf(filename) > - 1;
-  }).forEach(function(key) {
-    this.logInfo('Deleting', chalk.blue(key), 'from trace cache');
-    delete sharedCache.trace[key];
-  }, this);
+  this.builder.invalidate(filename);
+
+  this.logInfo('Invalidated', chalk.blue(filename), 'from cache');
 };
 
 DevBuilder.prototype.bundle = function() {
@@ -47,15 +39,12 @@ DevBuilder.prototype.build = function(filename) {
   if (filename) {
     this.removeFromTrace(filename);
   }
-  this.builder.setCache(sharedCache);
 
   var buildStart = Date.now();
 
   this.logInfo('jspm build starting', chalk.blue(this.expression));
 
   return this.bundle().then(function() {
-    sharedCache = this.builder.getCache();
-
     var buildEnd = Date.now();
     this.logInfo('jspm build finished', chalk.red(buildEnd - buildStart));
 
