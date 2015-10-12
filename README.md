@@ -32,7 +32,7 @@ var appDevBuilder = new DevBuilder({
 
 You can then call `appDevBuilder.build()` to generate a new build. If a file has changed and you need to rebuild, call `appDevBuilder.build('file-that-changed.js')`. This will cause the builder to invalidate the cache for the file that changed, and hence when a new build is generated it will have the new version of that file within it.
 
-If you don't pass `DevBuilder` a version of jspm to use, it will use its own version, which is currently set at 0.16.10.
+If you don't pass `DevBuilder` a version of jspm to use, it will use its own version, which is currently set at 0.16.12. Note that in order for the cache invalidation to work as expected, you **must be using jspm 0.16.12 or newer**. If you are stuck on an older version, you'll have to override `DevBuilder.prototype.removeFromTrace`.
 
 ## Sample Output
 
@@ -50,10 +50,11 @@ jspm-app jspm build finished 429
 
 ## Changelog
 
-#### 0.2.0 (not yet released)
+#### 0.2.0
 - renamed `inLoc` to `expression`
 - added `buildOptions` which are passed through to SystemJS-builder
 - added `buildOptions.sfx` to turn on self executing bundling
+- upgraded to jspm 0.16.12, and use the new SystemJS-Builder cache invalidation
 
 #### 0.1.0
 - initial release

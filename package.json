@@ -1,6 +1,6 @@
 {
   "name": "jspm-dev-builder",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A tiny library for building jspm bundles in development",
   "main": "index.js",
   "scripts": {
