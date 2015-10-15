@@ -1,2 +1,4 @@
 test-project/jspm_packages
 test-project/bundle.js
+test-project/bundle.js.map
+node_modules
