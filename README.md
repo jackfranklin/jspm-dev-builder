@@ -50,6 +50,9 @@ jspm-app jspm build finished 429
 
 ## Changelog
 
+#### 0.3.0
+- fixed the build function creating a new instance each time, and hence ignoring the cache - thanks @OrKoN for the PR
+
 #### 0.2.0
 - renamed `inLoc` to `expression`
 - added `buildOptions` which are passed through to SystemJS-builder
