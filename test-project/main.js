@@ -5,7 +5,7 @@ import tmpl from './main.hbs!';
 
 $(() => {
   testThing();
-  $('body').css('background-color', 'blue');
+  $('body').css('background-color', 'red');
 });
 
 var App = Ember.Application.extend({});

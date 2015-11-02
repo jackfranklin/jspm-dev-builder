@@ -4,12 +4,10 @@ var chokidar = require('chokidar');
 
 var appBuilder = new DevBuilder({
   expression: path.join(__dirname, 'main'),
-  outLoc: path.join(__dirname, 'bundle.js'),
+  outLoc: path.join(__dirname, 'bundleSfx.js'),
   logPrefix: 'my-app',
   buildOptions: {
-    minify: false,
-    mangle: false,
-    sourceMaps: true
+    sfx: true
   }
 });
 

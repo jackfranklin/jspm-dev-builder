@@ -18,11 +18,9 @@ function DevBuilder(options) {
 }
 
 DevBuilder.prototype.removeFromTrace = function(filename) {
-  if (!this.builder) return;
-
-  this.builder.invalidate(filename);
-
-  this.logInfo('Invalidated', chalk.blue(filename), 'from cache');
+  if (!this.builder) return false;
+  var invalidated = this.builder.invalidate(filename);
+  return invalidated.length > 0;
 };
 
 DevBuilder.prototype.bundle = function() {
@@ -32,25 +30,29 @@ DevBuilder.prototype.bundle = function() {
     return this.builder.buildStatic(this.expression, this.outLoc, buildOptions);
   } else {
     this.logInfo('Building non-SFX bundle');
-    return this.builder.build(this.expression, this.outLoc, buildOptions);
+    return this.builder.bundle(this.expression, this.outLoc, buildOptions);
   }
 };
 
 DevBuilder.prototype.build = function(filename) {
   if (filename) {
-    this.removeFromTrace(filename);
+    if (!this.removeFromTrace(filename)) {
+      this.logError('jspm invalidation error', ['Nothing has been invalidated for',
+        filename + '. It\'s likely that the module does not exist.',
+        'If the module is loaded using a plugin, you need to append !',
+        'to its name in order to invalidate it properly'].join(' '));
+    } else {
+      this.logInfo('Invalidated', chalk.blue(filename), 'from cache');
+    }
   }
 
   var buildStart = Date.now();
-
   this.logInfo('jspm build starting', chalk.blue(this.expression));
 
   return this.bundle().then(function() {
     var buildEnd = Date.now();
     this.logInfo('jspm build finished', chalk.red(buildEnd - buildStart));
-
     return this;
-
   }.bind(this)).catch(function(err) {
     this.logError('jspm build error', err.message, err.stack);
   }.bind(this));

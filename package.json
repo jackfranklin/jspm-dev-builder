@@ -1,21 +1,25 @@
 {
   "name": "jspm-dev-builder",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A tiny library for building jspm bundles in development",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Franklin",
+  "contributors": [{
+    "name": "Oleksii Rudenko",
+    "email": "oleksii.rudenko@n-fuse.de"
+  }],
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.1",
-    "jspm": "^0.16.12",
+    "jspm": "^0.16.14",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
     "chokidar": "^1.2.0",
-    "jspm": "^0.16.11"
+    "jspm": "^0.16.14"
   },
   "jspm": {
     "directories": {
