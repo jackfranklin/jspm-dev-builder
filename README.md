@@ -50,6 +50,9 @@ jspm-app jspm build finished 429
 
 ## Changelog
 
+#### 0.3.1
+- updated deprecated calls to the builder. Added more messaging during cache invalidation. More examples - for SFX as well.
+
 #### 0.3.0
 - fixed the build function creating a new instance each time, and hence ignoring the cache - thanks @OrKoN for the PR
 
