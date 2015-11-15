@@ -15,6 +15,10 @@ function DevBuilder(options) {
     sourceMaps: false,
     lowResSourceMaps: false,
   }, options.buildOptions || {});
+
+  if (this.buildOptions.sfx) {
+    this.logInfo('Warning! SFX Cache invalidation is buggy. See jackfranklin/jspm-dev-builder/issues/9.');
+  }
 }
 
 DevBuilder.prototype.removeFromTrace = function(filename) {
