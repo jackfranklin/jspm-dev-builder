@@ -19,7 +19,7 @@ var appDevBuilder = new DevBuilder({
   outLoc: path.join('client', 'app-bundle.js'), // where you want the output file
   logPrefix: 'jspm-app', // put at the beginning of log messages from dev builder
   buildOptions: {
-    sfx: false, // if the build should be self executing
+    sfx: false, // if the build should be self executing (please see note below on Self Executing Builds)
     // below options are passed straight through to the builder
     // the values shown are the defaults
     minify: false,
@@ -33,6 +33,10 @@ var appDevBuilder = new DevBuilder({
 You can then call `appDevBuilder.build()` to generate a new build. If a file has changed and you need to rebuild, call `appDevBuilder.build('file-that-changed.js')`. This will cause the builder to invalidate the cache for the file that changed, and hence when a new build is generated it will have the new version of that file within it.
 
 If you don't pass `DevBuilder` a version of jspm to use, it will use its own version, which is currently set at 0.16.12. Note that in order for the cache invalidation to work as expected, you **must be using jspm 0.16.12 or newer**. If you are stuck on an older version, you'll have to override `DevBuilder.prototype.removeFromTrace`.
+
+## Self Executing Builds
+
+There is currently a bug in jspm that causes cache invalidation to break with self executing builds. [Issue #9 is tracking this problem](https://github.com/jackfranklin/jspm-dev-builder/issues/9). Until then this plugin will not work well with self executing builds; you are advised to only use this with regular builds.
 
 ## Sample Output
 
