@@ -2,6 +2,10 @@
   "name": "jspm-dev-builder",
   "version": "0.3.2",
   "description": "A tiny library for building jspm bundles in development",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackfranklin/jspm-dev-builder.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
