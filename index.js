@@ -58,7 +58,13 @@ DevBuilder.prototype.build = function(filename) {
     this.logInfo('jspm build finished', chalk.red(buildEnd - buildStart));
     return this;
   }.bind(this)).catch(function(err) {
-    this.logError('jspm build error', err.message, err.stack);
+    // Do any errors actually contain a message property?
+    if (err.message) {
+        this.logError('jspm build error:', err.message, err.stack);
+    }
+    else {
+        this.logError('jspm build error:', err);
+    }
   }.bind(this));
 };
 
