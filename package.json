@@ -7,19 +7,20 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Franklin",
-  "contributors": [{
-    "name": "Oleksii Rudenko",
-    "email": "oleksii.rudenko@n-fuse.de"
-  }],
+  "contributors": [
+    {
+      "name": "Oleksii Rudenko",
+      "email": "oleksii.rudenko@n-fuse.de"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.1",
-    "jspm": "^0.16.14",
+    "jspm": "^0.16.32",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
-    "chokidar": "^1.2.0",
-    "jspm": "^0.16.14"
+    "chokidar": "^1.2.0"
   },
   "jspm": {
     "directories": {

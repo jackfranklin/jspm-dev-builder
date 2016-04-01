@@ -16,6 +16,11 @@ function DevBuilder(options) {
     lowResSourceMaps: false,
   }, options.buildOptions || {});
 
+  // older versions of jspm don't have a version property
+  if (this.jspm.version) {
+    this.logInfo('Using jspm version ', this.jspm.version);
+  }
+
   if (this.buildOptions.sfx) {
     this.logInfo('Warning! SFX Cache invalidation is buggy. See jackfranklin/jspm-dev-builder/issues/9.');
   }
