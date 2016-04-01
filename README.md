@@ -50,6 +50,10 @@ jspm-app jspm build finished 429
 
 ## Changelog
 
+#### 0.4.0
+- add logging of `jspm.version`
+- update to latest stable jspm (0.16.32)
+
 #### 0.3.2
 - add message about SFX cache invalidation being buggy that links to https://github.com/jackfranklin/jspm-dev-builder/issues/9.
 
