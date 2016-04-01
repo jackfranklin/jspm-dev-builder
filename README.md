@@ -2,6 +2,8 @@
 
 A small module for running [jspm](http://www.jspm.io) development builds.
 
+__Note__: if you're running jspm 0.17-beta12 or higher, this feature is now built in! See [this GitHub issue](https://github.com/jspm/jspm-cli/issues/1572) for more information.
+
 ## Motivations
 
 When you're working on small applications, one of the best features of jspm is that you don't need to run any form of watch task. jspm loads and transpiles everything in the browser, and in development this workflow works really well. However, when your app reaches a certain size the overhead of running everything in the browser leads to your app taking multiple seconds to refresh.
